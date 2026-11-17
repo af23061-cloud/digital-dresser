@@ -45,12 +45,30 @@ div[data-testid="stDialog"] [data-testid="stColumn"] {
     width: 100% !important;
     min-width: 0 !important;
 }
-/* 選択ボタンを小さくする */
-div[data-testid="stDialog"] button {
+/* 選択ボタンだけを小さくする（右上の✕ボタンには影響させない） */
+div[data-testid="stDialog"] [data-testid="stHorizontalBlock"] button {
     padding: 2px 0px !important;
     font-size: 10px !important;
     min-height: 24px !important;
     width: 100% !important;
+}
+/* 右上の✕（閉じる）ボタンの位置とサイズを固定し、タイトルと重ならないようにする */
+div[data-testid="stDialog"] button[aria-label="Close"] {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    z-index: 999 !important;
+}
+/* タイトル文字が右上の✕ボタンに被らないよう右側に余白を作る */
+div[data-testid="stDialog"] [data-testid="stDialogHeader"],
+div[data-testid="stDialog"] h1,
+div[data-testid="stDialog"] h2,
+div[data-testid="stDialog"] h3 {
+    padding-right: 40px !important;
 }
 </style>
 """, unsafe_allow_html=True)

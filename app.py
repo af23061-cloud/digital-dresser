@@ -34,32 +34,26 @@ st.set_page_config(
 
 # スマホ向けCSSの追加（タイルの折り返し＆タッチ操作の最適化）
 st.markdown("""
-    <style>
-        [data-testid="stSidebar"] { display: none !important; }
-        [data-testid="stSidebarCollapseButton"] { display: none !important; }
-        #root > div:nth-child(1) > div:nth-child(1) > div > div { padding-top: 1rem !important; }
-        .stApp { background-color: #FFF8F8; }
-        
-        /* メインボタン（ピンク・タップしやすい高さ） */
-        div.stButton > button {
-            background-color: #FF6584 !important;
-            color: white !important;
-            border-radius: 16px !important;
-            border: none !important;
-            font-weight: bold !important;
-            width: 100%;
-            padding: 12px 16px !important;
-            font-size: 16px !important;
-        }
-
-        /* スマホ画面でカラータイルラジオボタンを綺麗に折り返す設定 */
-        div[role="radiogroup"] {
-            flex-wrap: wrap !important;
-            gap: 6px !important;
-        }
-    </style>
+<style>
+/* ポップアップ内の横並びブロックをスマホでも強制的に5列グリッドにする */
+div[data-testid="stDialog"] [data-testid="stHorizontalBlock"] {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 4px !important;
+}
+div[data-testid="stDialog"] [data-testid="stColumn"] {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+/* 選択ボタンを小さくする */
+div[data-testid="stDialog"] button {
+    padding: 2px 0px !important;
+    font-size: 10px !important;
+    min-height: 24px !important;
+    width: 100% !important;
+}
+</style>
 """, unsafe_allow_html=True)
-
 # =========================================================
 # 📦 状態管理（Session State）の初期化
 # =========================================================
